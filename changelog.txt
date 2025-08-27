@@ -1,0 +1,7 @@
+1.1.4
+- Fix sword block cannot be disabled properly
+
+1.1.3
+- Add config to only apply scaling to player
+- Fix sharpness attribute display
+- Add freezing damage scaling config
