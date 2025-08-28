@@ -11,8 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -51,7 +49,6 @@ public abstract class ItemStackMixin {
 		boolean flag = pPlayer.getOffhandItem().getItem().getUseAnimation(pPlayer.getOffhandItem()).equals(UseAnim.NONE);
 		if (pUsedHand.equals(InteractionHand.MAIN_HAND) && WeaponBlockHandler.canBlock(pPlayer.getMainHandItem()) && flag) {
 			pPlayer.startUsingItem(pUsedHand);
-			MinecraftForge.EVENT_BUS.post(new PlayerInteractEvent.RightClickItem(pPlayer, pUsedHand));
 			cir.setReturnValue(InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand)));
 		}
 	}
