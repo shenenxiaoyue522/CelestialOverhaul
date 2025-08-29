@@ -44,12 +44,11 @@ public abstract class ItemStackMixin {
 		}
 	}
 
-	@Inject(at = @At("HEAD"), method = "use", cancellable = true)
+	@Inject(at = @At("HEAD"), method = "use")
 	public void celestial_overhaul$use(Level pLevel, Player pPlayer, InteractionHand pUsedHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
 		boolean flag = pPlayer.getOffhandItem().getItem().getUseAnimation(pPlayer.getOffhandItem()).equals(UseAnim.NONE);
 		if (pUsedHand.equals(InteractionHand.MAIN_HAND) && WeaponBlockHandler.canBlock(pPlayer.getMainHandItem()) && flag) {
 			pPlayer.startUsingItem(pUsedHand);
-			cir.setReturnValue(InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand)));
 		}
 	}
 }
