@@ -35,6 +35,7 @@ public class COModConfig {
 		public final ForgeConfigSpec.DoubleValue killerEnchantmentBonus;
 		public final ForgeConfigSpec.DoubleValue thornsEnchantmentTweak;
 		public final ForgeConfigSpec.DoubleValue strengthEffectDamageBonus;
+		public final ForgeConfigSpec.DoubleValue weaknessEffectDamageReduce;
 		public final ForgeConfigSpec.DoubleValue resistanceEffectTweak;
 		public final ForgeConfigSpec.DoubleValue regenerationEffectTweak;
 		public final ForgeConfigSpec.DoubleValue poisonEffectDamageTweak;
@@ -45,6 +46,7 @@ public class COModConfig {
 		public final ForgeConfigSpec.DoubleValue fireTypeDamageTweak;
 		public final ForgeConfigSpec.DoubleValue frozenTypeDamageTweak;
 		public final ForgeConfigSpec.BooleanValue scalingToPlayerOnly;
+		public final ForgeConfigSpec.DoubleValue maxHealAmountTweak;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.push("misc");
@@ -75,6 +77,10 @@ public class COModConfig {
 					.comment("Strength effect damage bonus per level")
 					.comment("A value of -1 disables this function")
 					.defineInRange("strengthEffectDamageBonus", 0.3, -1, 10);
+			weaknessEffectDamageReduce = builder
+					.comment("Weakness effect damage reduce per level")
+					.comment("A value of -1 disables this function")
+					.defineInRange("weaknessEffectDamageReduce", -1, -1, 10.0);
 			resistanceEffectTweak = builder
 					.comment("Multiplicative stacking factor for Resistance Effect")
 					.comment("newDamage = incomingDamage * factor ^ level")
@@ -147,6 +153,11 @@ public class COModConfig {
 					.comment("newHealing = oldHealing * max(1, factor * maxHealth)")
 					.comment("A value of -1 disables this function")
 					.defineInRange("fullFoodLevelHealTweak", 0.05, -1, 1);
+			maxHealAmountTweak = builder
+					.comment("Entities are bound by this value when they healed")
+					.comment("newHealing = maxHealth * factor")
+					.comment("A value of -1 disables this function")
+					.defineInRange("maxHealAmountTweak", -1, -1, Double.MAX_VALUE);
 			builder.pop();
 		}
 	}

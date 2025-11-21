@@ -18,6 +18,9 @@ public class AttackDamageMobEffectMixin {
 		if (self == MobEffects.DAMAGE_BOOST && EffectOverrideHandler.strength >= 0) {
 			cir.setReturnValue((1 + amp) * EffectOverrideHandler.strength);
 		}
+		if (self == MobEffects.WEAKNESS && EffectOverrideHandler.weakness >= 0) {
+			cir.setReturnValue((1 + amp) * (-EffectOverrideHandler.weakness));
+		}
 	}
 
 }

@@ -23,10 +23,12 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -39,6 +41,15 @@ public class COGeneralEventHandler {
 	public static void serverTick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
 			EffectOverrideHandler.check();
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public static void onLivingHeal(LivingHealEvent event) {
+		Double config = COModConfig.COMMON.maxHealAmountTweak.get();
+		if (config > 0) {
+			float min = Math.min(event.getEntity().getMaxHealth() * config.floatValue(), event.getAmount());
+			event.setAmount(min);
 		}
 	}
 
