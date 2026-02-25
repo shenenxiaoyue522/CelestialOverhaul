@@ -3,19 +3,17 @@ package com.xiaoyue.celestial_overhaul;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static com.xiaoyue.celestial_overhaul.CelestialOverhaul.MODID;
 
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 public class COverhaulClient {
 
-	public static final HumanoidModel.ArmPose SWORD_BLOCK = HumanoidModel.ArmPose.create("sword_block",
-			true, (humanoidModel, livingEntity, humanoidArm) -> {
-			});
+	public static final HumanoidModel.ArmPose SWORD_BLOCK = HumanoidModel.ArmPose.BLOCK;
 
 	@SubscribeEvent
 	public static void onClientInit(FMLClientSetupEvent event) {

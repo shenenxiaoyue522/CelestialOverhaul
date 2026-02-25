@@ -12,7 +12,7 @@ public class CombatRulesMixin {
 
 	@Inject(at = @At("HEAD"), method = "getDamageAfterMagicAbsorb", cancellable = true)
 	private static void celestial_overhaul$getDamageAfterMagicAbsorb(float pDamage, float pEnchantModifiers, CallbackInfoReturnable<Float> cir) {
-		Double config = COModConfig.COMMON.protectionEnchantmentTweak.get();
+		Double config = COModConfig.SERVER.protectionEnchantmentTweak.get();
 		if (config >= 0) {
 			double powed = Math.pow(config.floatValue(), pEnchantModifiers);
 			cir.setReturnValue((float) (pDamage * powed));

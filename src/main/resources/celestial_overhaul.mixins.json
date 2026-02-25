@@ -1,22 +1,19 @@
 {
-	"required": true,
-	"package": "com.xiaoyue.celestial_overhaul.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"refmap": "celestial_overhaul.refmap.json",
-	"mixins": [
-		"AttackDamageMobEffectMixin",
-		"CombatRulesMixin",
-		"DamageEnchMixin",
-		"FoodDataMixin",
-		"ItemStackMixin",
-		"LivingEntityMixin",
-		"MobEffectMixin",
-		"ThornsEnchMixin"
-	],
-	"minVersion": "0.8",
-	"client": [
-		"HumanoidModelMixin",
-		"ItemInHandRenderMixin",
-		"PlayerRenderMixin"
+  "required": true,
+  "package": "com.xiaoyue.celestial_overhaul.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "celestial_overhaul.refmap.json",
+  "mixins": [
+    "CombatRulesMixin",
+    "FoodDataMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "MobEffectAccessor"
+  ],
+  "minVersion": "0.8",
+  "client": [
+    "HumanoidModelMixin",
+    "ItemInHandRenderMixin",
+    "PlayerRenderMixin"
 	]
 }

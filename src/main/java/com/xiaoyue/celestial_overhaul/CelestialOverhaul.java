@@ -1,37 +1,42 @@
 package com.xiaoyue.celestial_overhaul;
 
 import com.mojang.logging.LogUtils;
+import com.tterrag.registrate.Registrate;
+import com.xiaoyue.celestial_invoker.invoker.config.ConfigHolderMap;
+import com.xiaoyue.celestial_invoker.invoker.config.ConfigLoader;
 import com.xiaoyue.celestial_overhaul.content.EffectOverrideHandler;
 import com.xiaoyue.celestial_overhaul.data.COModConfig;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import org.slf4j.Logger;
 
 @Mod(CelestialOverhaul.MODID)
 public class CelestialOverhaul {
+
 	public static final String MODID = "celestial_overhaul";
 	public static final Logger LOGGER = LogUtils.getLogger();
+	public static final Registrate REGISTRATE = Registrate.create(MODID);
 
 	public CelestialOverhaul() {
 		COModConfig.init();
 	}
 
 	@SubscribeEvent
-	public static void commonSetup(ModConfigEvent.Loading event) {
-		if (event.getConfig().getType() == ModConfig.Type.COMMON)
+	public static void loadConfig(ModConfigEvent.Loading event) {
+		if (event.getConfig().getType() == ModConfig.Type.SERVER)
 			EffectOverrideHandler.reloadEffectAttributes();
 	}
 
 	@SubscribeEvent
-	public static void commonSetup(ModConfigEvent.Reloading event) {
-		if (event.getConfig().getType() == ModConfig.Type.COMMON)
+	public static void reloadConfig(ModConfigEvent.Reloading event) {
+		if (event.getConfig().getType() == ModConfig.Type.SERVER)
 			EffectOverrideHandler.reloadEffectAttributes();
 	}
 
 	public static ResourceLocation loc(String s) {
-		return new ResourceLocation(MODID, s);
+		return ResourceLocation.fromNamespaceAndPath(MODID, s);
 	}
 }

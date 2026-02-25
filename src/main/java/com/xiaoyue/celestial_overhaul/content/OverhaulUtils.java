@@ -19,7 +19,7 @@ public class OverhaulUtils {
 
 	public static boolean canGrassPierce(@Nullable Player attacker, Level level, BlockPos pos) {
 		if (attacker == null) return false;
-		if (COModConfig.COMMON.grassPiercingAttack.get()) {
+		if (COModConfig.SERVER.grassPiercingAttack.get()) {
 			BlockState state = level.getBlockState(pos);
 			return state.getCollisionShape(level, pos).isEmpty();
 		}

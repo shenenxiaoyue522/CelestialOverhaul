@@ -3,14 +3,14 @@ package com.xiaoyue.celestial_overhaul.event;
 import com.xiaoyue.celestial_overhaul.data.COModConfig;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RenderBlockScreenEffectEvent;
 
 import static com.xiaoyue.celestial_overhaul.CelestialOverhaul.MODID;
 
-@Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 public class COClientEventHandler {
 
 	@SubscribeEvent

@@ -12,12 +12,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.UseAnim;
-import net.minecraftforge.common.MinecraftForge;
+import net.neoforged.neoforge.common.NeoForge;
 
 public class WeaponBlockHandler {
 
 	public static boolean isCurrentItem(ItemStack stack) {
-		if (!COModConfig.COMMON.canUseSwordBlock.get()) return false;
+		if (!COModConfig.SERVER.canUseSwordBlock.get()) return false;
 		return stack.getItem() instanceof SwordItem || stack.getItem() instanceof CanBlockItem || stack.is(COTagGen.CAN_BLOCK_SWORD);
 	}
 
@@ -36,7 +36,7 @@ public class WeaponBlockHandler {
 			baseModifier = 0.5f;
 		}
 		var event = new WeaponBlockedEvent(stack, entity, source, baseModifier);
-		return MinecraftForge.EVENT_BUS.post(event) ? 0f : event.getDamageModifier();
+		return NeoForge.EVENT_BUS.post(event).isCanceled() ? 0f : event.getDamageModifier();
 	}
 
 	public static int getBlockTime(ItemStack stack) {
@@ -54,7 +54,7 @@ public class WeaponBlockHandler {
 	}
 
 	public static boolean canBlock(ItemStack stack) {
-		if (!COModConfig.COMMON.canUseSwordBlock.get()) return false;
+		if (!COModConfig.SERVER.canUseSwordBlock.get()) return false;
 		if (stack.is(COTagGen.CANNOT_BLOCK_SWORD)) return false;
 		return stack.getUseAnimation().equals(UseAnim.BLOCK) && isCurrentItem(stack);
 	}

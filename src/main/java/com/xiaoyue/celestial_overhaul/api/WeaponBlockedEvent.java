@@ -3,11 +3,10 @@ package com.xiaoyue.celestial_overhaul.api;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.Cancelable;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.ICancellableEvent;
 
-@Cancelable
-public class WeaponBlockedEvent extends Event {
+public class WeaponBlockedEvent extends Event implements ICancellableEvent {
 
 	private final ItemStack stack;
 	private final LivingEntity entity;

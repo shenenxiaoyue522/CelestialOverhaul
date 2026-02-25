@@ -13,7 +13,7 @@ public class FoodDataMixin {
 
 	@ModifyArg(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;heal(F)V", ordinal = 0), method = "tick")
 	public float celestial_overhaul$modifyHeal0(float par1, @Local(argsOnly = true) Player pPlayer) {
-		Double config = COModConfig.COMMON.fullFoodLevelHealTweak.get();
+		Double config = COModConfig.SERVER.fullFoodLevelHealTweak.get();
 		if (config >= 0) {
 			return par1 * Math.max(1, pPlayer.getMaxHealth() * config.floatValue());
 		}
@@ -22,7 +22,7 @@ public class FoodDataMixin {
 
 	@ModifyArg(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;heal(F)V", ordinal = 1), method = "tick")
 	public float celestial_overhaul$modifyHeal1(float par1, @Local(argsOnly = true) Player pPlayer) {
-		Double config = COModConfig.COMMON.fullFoodLevelHealTweak.get();
+		Double config = COModConfig.SERVER.fullFoodLevelHealTweak.get();
 		if (config >= 0) {
 			return par1 * Math.max(1, pPlayer.getMaxHealth() * config.floatValue());
 		}

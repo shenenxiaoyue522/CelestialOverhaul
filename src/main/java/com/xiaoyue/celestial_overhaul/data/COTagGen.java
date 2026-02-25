@@ -17,7 +17,7 @@ public class COTagGen {
 	public static final TagKey<EntityType<?>> DAMAGE_SCALING_BLACK_LIST = TagKey.create(Registries.ENTITY_TYPE, CelestialOverhaul.loc("damage_scaling_black_list"));
 
 	public static boolean allow(Entity e) {
-		if (COModConfig.COMMON.scalingToPlayerOnly.get()) {
+		if (COModConfig.SERVER.scalingToPlayerOnly.get()) {
 			return e instanceof Player;
 		}
 		return !e.getType().is(DAMAGE_SCALING_BLACK_LIST);

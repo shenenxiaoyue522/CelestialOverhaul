@@ -15,7 +15,7 @@ public abstract class LivingEntityMixin {
 	@WrapOperation(at = @At(value = "INVOKE", target = "Ljava/lang/Math;max(FF)F"), method = "getDamageAfterMagicAbsorb")
 	public float celestial_overhaul$getDamageAfterMagicAbsorb(float a, float b, Operation<Float> original, @Local(argsOnly = true) float pDamageAmount) {
 		LivingEntity entity = (LivingEntity) (Object) this;
-		Double config = COModConfig.COMMON.resistanceEffectTweak.get();
+		Double config = COModConfig.SERVER.resistanceEffectTweak.get();
 		if (config >= 0 && entity.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
 			int lv = entity.getEffect(MobEffects.DAMAGE_RESISTANCE).getAmplifier() + 1;
 			double powed = Math.pow(config.floatValue(), lv);
