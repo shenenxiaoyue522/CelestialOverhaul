@@ -1,6 +1,5 @@
 package com.xiaoyue.celestial_overhaul.data;
 
-import com.xiaoyue.celestial_invoker.CelestialInvoker;
 import com.xiaoyue.celestial_invoker.invoker.config.wrapper.ConfigWrapper;
 import com.xiaoyue.celestial_overhaul.CelestialOverhaul;
 import net.neoforged.fml.config.ModConfig;
