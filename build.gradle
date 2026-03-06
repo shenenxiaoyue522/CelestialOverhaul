@@ -107,7 +107,7 @@ repositories {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    implementation jarJar(group: 'xiaoyue.celestial_invoker', name: 'celestial_invoker', version: "[21nf7c,)")
+    implementation jarJar(group: 'xiaoyue.celestial_invoker', name: 'celestial_invoker', version: "[21nf7e,)")
 
     implementation "com.tterrag.registrate:Registrate:${registrate_version}"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
