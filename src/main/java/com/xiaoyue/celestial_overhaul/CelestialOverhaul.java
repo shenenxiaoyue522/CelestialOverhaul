@@ -2,6 +2,7 @@ package com.xiaoyue.celestial_overhaul;
 
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.Registrate;
+import com.xiaoyue.celestial_invoker.invoker.config.ConfigLoader;
 import com.xiaoyue.celestial_overhaul.content.EffectOverrideHandler;
 import com.xiaoyue.celestial_overhaul.data.COModConfig;
 import net.minecraft.resources.ResourceLocation;
