@@ -8,7 +8,10 @@
     "FoodDataMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
-    "MobEffectAccessor"
+    "MobEffectAccessor",
+    "PoisonEffectMixin",
+    "RegenerationEffectMixin",
+    "WitherEffectMixin"
   ],
   "minVersion": "0.8",
   "client": [
