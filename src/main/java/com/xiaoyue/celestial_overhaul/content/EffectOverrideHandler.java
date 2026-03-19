@@ -22,13 +22,13 @@ public class EffectOverrideHandler {
 		strength = COModConfig.SERVER.strengthEffectDamageBonus.get();
 		var strengthUuid = ResourceLocation.withDefaultNamespace("effect.strength");
 		var strengthOp = strength < 0 ? AttributeModifier.Operation.ADD_VALUE : AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
-		MobEffects.DAMAGE_BOOST.value().addAttributeModifier(attr, strengthUuid, 0, strengthOp);
+		MobEffects.DAMAGE_BOOST.value().addAttributeModifier(attr, strengthUuid, strength, strengthOp);
 
 		((MobEffectAccessor) MobEffects.WEAKNESS.value()).getAttributeModifiers().clear();
 		weakness = COModConfig.SERVER.weaknessEffectDamageReduce.get();
 		var weaknessUuid = ResourceLocation.withDefaultNamespace("effect.weakness");
 		var weaknessOp = weakness < 0 ? AttributeModifier.Operation.ADD_VALUE : AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
-		MobEffects.WEAKNESS.value().addAttributeModifier(attr, weaknessUuid, 0, weaknessOp);
+		MobEffects.WEAKNESS.value().addAttributeModifier(attr, weaknessUuid, weakness, weaknessOp);
 	}
 
 	public synchronized static void reloadEffectAttributes() {

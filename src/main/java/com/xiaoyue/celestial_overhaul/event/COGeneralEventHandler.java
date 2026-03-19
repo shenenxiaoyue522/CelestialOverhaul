@@ -61,11 +61,13 @@ public class COGeneralEventHandler {
 
 	@SubscribeEvent
 	public static void onCritHit(CriticalHitEvent event) {
-		if (!event.isVanillaCritical() || event.isCriticalHit()) return;
-		if (!COModConfig.SERVER.canVanillaCritical.get()) {
-			event.setCriticalHit(false);
-		}
-	}
+        if (event.isVanillaCritical()) {
+            if (!COModConfig.SERVER.canVanillaCritical.get()) {
+                event.setCriticalHit(false);
+				event.setDisableSweep(true);
+            }
+        }
+    }
 
 	@SubscribeEvent
 	public static void onLivingDamage(LivingDamageEvent.Pre event) {

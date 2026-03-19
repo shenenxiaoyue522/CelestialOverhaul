@@ -12,6 +12,7 @@ public class COModConfig {
 		public final ModConfigSpec.BooleanValue hideEffectiveFireScreen;
 
 		public Client(Builder builder) {
+			setCelestial();
 			builder.push("function", "Function");
 			hideEffectiveFireScreen = builder
 					.name("Hide Effective Fire Screen")
@@ -45,6 +46,7 @@ public class COModConfig {
 		public final ModConfigSpec.DoubleValue maxHealAmountTweak;
 
 		public Server(Builder builder) {
+			setCelestial();
 			builder.push("misc", "Misc");
 			grassPiercingAttack = builder
 					.name("Grass Piercing Attack")
