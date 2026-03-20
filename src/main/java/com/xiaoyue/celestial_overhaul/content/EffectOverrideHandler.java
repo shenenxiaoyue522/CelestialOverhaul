@@ -28,7 +28,7 @@ public class EffectOverrideHandler {
 		weakness = COModConfig.SERVER.weaknessEffectDamageReduce.get();
 		var weaknessUuid = ResourceLocation.withDefaultNamespace("effect.weakness");
 		var weaknessOp = weakness < 0 ? AttributeModifier.Operation.ADD_VALUE : AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
-		MobEffects.WEAKNESS.value().addAttributeModifier(attr, weaknessUuid, weakness, weaknessOp);
+		MobEffects.WEAKNESS.value().addAttributeModifier(attr, weaknessUuid, -weakness, weaknessOp);
 	}
 
 	public synchronized static void reloadEffectAttributes() {
