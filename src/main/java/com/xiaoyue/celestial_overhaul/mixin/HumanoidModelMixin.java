@@ -1,6 +1,7 @@
 package com.xiaoyue.celestial_overhaul.mixin;
 
 import com.xiaoyue.celestial_overhaul.COverhaulClient;
+import com.xiaoyue.celestial_overhaul.content.WeaponBlockHandler;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.HumanoidArm;
@@ -31,7 +32,7 @@ public abstract class HumanoidModelMixin<T extends LivingEntity> {
 
 	@Inject(at = @At("HEAD"), method = "poseRightArm", cancellable = true)
 	public void celestial_overhaul$renderRight(T pLivingEntity, CallbackInfo ci) {
-		if (this.rightArmPose.equals(COverhaulClient.SWORD_BLOCK)) {
+		if (this.rightArmPose.equals(COverhaulClient.SWORD_BLOCK) && WeaponBlockHandler.canBlock(pLivingEntity.getMainHandItem())) {
 			COverhaulClient.renderArm(pLivingEntity.getMainArm(), this.rightArm);
 			ci.cancel();
 		}
@@ -39,7 +40,7 @@ public abstract class HumanoidModelMixin<T extends LivingEntity> {
 
 	@Inject(at = @At("HEAD"), method = "poseLeftArm", cancellable = true)
 	public void celestial_overhaul$renderLeft(T pLivingEntity, CallbackInfo ci) {
-		if (this.leftArmPose.equals(COverhaulClient.SWORD_BLOCK)) {
+		if (this.leftArmPose.equals(COverhaulClient.SWORD_BLOCK) && WeaponBlockHandler.canBlock(pLivingEntity.getMainHandItem())) {
 			COverhaulClient.renderArm(pLivingEntity.getMainArm(), this.leftArm);
 			ci.cancel();
 		}
